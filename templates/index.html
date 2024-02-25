@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mongo-movies</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://kit.fontawesome.com/b5683da958.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="center-container">
+        <h1 class="search-text"></h1>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <div id="movies-container" class="movies-container"></div>
+
+    <div class="loading-container" style="display: none;">
+        <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Loading Animation">
+        <p class="loading-text">Loading...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/movies.js') }}"></script>
+
+</body>
+
+</html>
