@@ -60,8 +60,7 @@ def get_embed(title):
     except Exception as e:
         return f"<p>Error: An unexpected error occurred. {str(e)}</p>"
 
-
-<<<<<<< HEAD
+    
     match = re.search('<link itemprop="embedUrl" href="(.*?)">', html_content)
     if match:
         movie_url = match.group(1)
@@ -91,8 +90,6 @@ def get_vidsrc(key, title):
         return render_template("movie_not_found.html", title=title, provider="vidsrc")
     else:
         return iframe
-=======
->>>>>>> 38f450880cf7292a1f9fac382042b04cad921aed
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
