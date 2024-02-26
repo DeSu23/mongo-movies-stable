@@ -29,7 +29,7 @@ def search_movies():
         print('Error fetching movies:', e)
         return "<script>alert(f\"Error fetching movies:', {e}\")", 500
 
-# code below by gabrielzv1233, code above made by DeSu32
+# code below by gabrielzv1233, code above made by DeSu32.
 @app.route('/movie/<path:tmdb_movie_id>')
 def movie(tmdb_movie_id):
     api_key = '04aae18c13755d9ce23441e1221b3529'
@@ -41,11 +41,27 @@ def movie(tmdb_movie_id):
     return render_template("movie.html", iframe=get_embed(movie_data['title'].lower()), title=movie_data['title'])
 
 def get_embed(title):
-    filteredtitle = title.replace(" ", "-")
-    url = f"https://w1.nites.is/movies/{filteredtitle}/"
-    response = requests.get(url)
-    html_content = response.text
+    try:
+        filteredtitle = title.replace(" ", "-")
+        url = f"https://w1.nites.is/movies/{filteredtitle}/"
+        response = requests.get(url)
+        if response.status_code != 200:
+            return f"<p>Error: Unable to retrieve the movie you were looking for 😔. Status code {response.status_code}</p>"
+        html_content = response.text
+        match = re.search('<link itemprop="embedUrl" href="(.*?)">', html_content)
+        if match:
+            movie_url = match.group(1)
+            movie_url = movie_url.replace(r"#038", r"amp")
+            movie_url = movie_url.replace(r"&trtype=1", r"&trtype=1")
+            iframe = f'<iframe class="movie_iframe" frameborder="0" allowfullscreen="" data-lazy-src="{movie_url}" data-lazy-method="viewport" data-lazy-attributes="src" src="{movie_url}" data-gtm-yt-inspected-6="true"></iframe>'
+            return iframe
+        else:
+            return f"<p>Error: No movie URL found for title '{title}'</p>"
+    except Exception as e:
+        return f"<p>Error: An unexpected error occurred. {str(e)}</p>"
 
+
+<<<<<<< HEAD
     match = re.search('<link itemprop="embedUrl" href="(.*?)">', html_content)
     if match:
         movie_url = match.group(1)
@@ -75,6 +91,8 @@ def get_vidsrc(key, title):
         return render_template("movie_not_found.html", title=title, provider="vidsrc")
     else:
         return iframe
+=======
+>>>>>>> 38f450880cf7292a1f9fac382042b04cad921aed
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
