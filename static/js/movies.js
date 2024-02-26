@@ -75,7 +75,7 @@ searchInput.addEventListener('input', function () {
                         movieImage = 'none';
                     }
 
-                    const movieUrl = useVidSrcUrl ? `/vidsrc/movie/${movie.id}` : `/movie/${movie.id}`;
+                    const movieUrl = useVidSrcUrl ? `/vidsrc/movie/${movie.id}` : `/nites/movie/${movie.id}`;
 
                     movieBox.innerHTML = `
                         <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;" onclick="window.location.href = '${movieUrl}'"></div>
