@@ -17,12 +17,22 @@
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search...">
             <i class="fas fa-search search-icon"></i>
-        </div>|
-        <!-- made by gabrielzv1233 -->
-        <div class="toggle-switch-container">
-            <input type="checkbox" id="toggle-switch" class="toggle-switch">
-            <label for="toggle-switch" class="toggle-label">when off source = nites.is when on source = vidsrc</label>
         </div>
+        <!-- made by gabrielzv1233 -->
+        <!-- default is whatever is at the top of the list, order is also as shown on the list, to add another route you must also add to the var "routeMap"-->
+        <script>
+        // do not add a "/" at the end or "${movie.id}"
+        let routeMap = {
+            'vidsrc': '/vidsrc/movie',
+            'nites': '/nites/movie'
+        };
+        </script>
+        <div class="dropdown-container">
+            <select id="route-select" class="route-select">
+                <option value="vidsrc">VidSrc</option>
+                <option value="nites">Nites</option>
+            </select>
+        </div>        
         <!-- made by DeSu32-->
     </div>
 

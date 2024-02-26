@@ -16,18 +16,18 @@ window.onload = function () {
 const searchInput = document.querySelector('.search-input');
 const loadingContainer = document.querySelector('.loading-container');
 const moviesContainer = document.getElementById('movies-container');
-// made by gabrielzv1233
 
 let currentSearchQuery = '';
 let timeoutId = null;
-let useVidSrcUrl = false; // Variable to keep track of the toggle switch state
 
-const toggleSwitch = document.getElementById('toggle-switch');
+let selectedRoute = 'vidsrc'; // Default route selection
 
-toggleSwitch.addEventListener('change', function () {
-    useVidSrcUrl = this.checked;
+const routeSelect = document.getElementById('route-select');
+
+routeSelect.addEventListener('change', function () {
+    selectedRoute = this.value;
 });
-// made by DeSu32
+
 searchInput.addEventListener('input', function () {
     const query = searchInput.value.trim();
 
@@ -75,7 +75,7 @@ searchInput.addEventListener('input', function () {
                         movieImage = 'none';
                     }
 
-                    const movieUrl = useVidSrcUrl ? `/vidsrc/movie/${movie.id}` : `/nites/movie/${movie.id}`;
+                    const movieUrl = `${routeMap[selectedRoute]}/${movie.id}`;
 
                     movieBox.innerHTML = `
                         <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;" onclick="window.location.href = '${movieUrl}'"></div>
