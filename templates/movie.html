@@ -1,20 +1,28 @@
-<!-- Made by Gabrielzv1233 -->
+<!DOCTYPE html>
 <html>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watching {{title}} on Mongo Movies</title>
+
 <head>
+    <title>{{ title }}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+
 <body>
+    <div id="movie-container"></div>
+
+    <script src="{{ url_for('static', filename='js/movie.js') }}"></script>
     <style>
-        .movie_iframe {
-            width: 100%;
-            height: 100%;
-        }
+        html,
         body {
+            height: 100%;
             margin: 0;
             padding: 0;
         }
+
+        #movie-container {
+            width: 100%;
+            height: 100%;
+        }
     </style>
-    {{ iframe | safe }}
-<body>
+</body>
+
 </html>

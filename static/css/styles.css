@@ -129,6 +129,7 @@ footer {
     transform: scale(0.9);
     background-color: rgba(255, 255, 255, 0.1);
     outline: 10px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 
@@ -137,7 +138,12 @@ footer {
     width: 100%;
     height: 225px;
     object-fit: contain;
+    border-radius: 10px;
+    /* Add this line */
+    background-size: cover;
+    background-position: center;
 }
+
 
 .movie-box .movie-image {
     background-size: cover;
