@@ -77,4 +77,4 @@ def get_vidsrc(key, title):
         return iframe
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
